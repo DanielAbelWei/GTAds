@@ -199,6 +199,10 @@ class GTAdsYlhProvider extends GTAdsProvider {
         if (callBack != null && callBack.onVerify != null) {
           callBack.onVerify!(adCode, true, transId, rewardName, rewardAmount);
         }
+      }, onECPM: (String ecpmLevel, int ecpm) {
+        if (callBack != null && callBack.onYlhEcpm != null) {
+          callBack.onYlhEcpm!(adCode, ecpmLevel, ecpm);
+        }
       }, onFinish: () {
         if (callBack != null && callBack.onFinish != null) {
           callBack.onFinish!(adCode);
