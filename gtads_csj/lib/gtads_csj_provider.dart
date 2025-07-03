@@ -91,10 +91,7 @@ class GTAdsCsjProvider extends GTAdsProvider {
           callBack.onFail!(adCode, "加载超时");
         }
       }, onEcpm: (info) {
-        // print("onEcpm info => $info");
-        if (callBack != null && callBack.onCsjEcpm != null) {
-          callBack.onCsjEcpm!(adCode, info);
-        }
+        print("onEcpm info => $info");
       }),
     );
   }
@@ -207,10 +204,7 @@ class GTAdsCsjProvider extends GTAdsProvider {
             callBack?.onFail!(adCode, "未加载完成");
           }
         }, onEcpm: (info) {
-          // print("onEcpm info => $info");
-          if (callBack != null && callBack.onCsjEcpm != null) {
-            callBack.onCsjEcpm!(adCode, info);
-          }
+          print("onEcpm info => $info");
         }
       ),
     );
@@ -279,10 +273,12 @@ class GTAdsCsjProvider extends GTAdsProvider {
           if (callBack?.onFail != null) {
             callBack?.onFail!(adCode, "激励广告预加载未准备就绪");
           }
-        }, onEcpm: (info) {
-          // print("onEcpm info => $info");
-          if (callBack != null && callBack.onCsjEcpm != null) {
-            callBack.onCsjEcpm!(adCode, info);
+        }, 
+        onEcpm: (info) {
+          print("onEcpm info => $info");
+          if (callBack?.onEcpm != null) {
+            final ecpm = num.tryParse(info?['ecpm']?.toString() ?? '') ?? 0;
+            callBack?.onEcpm!(adCode, ecpm);
           }
         },
         onRewardArrived: (rewardVerify, rewardType, rewardAmount, rewardName,

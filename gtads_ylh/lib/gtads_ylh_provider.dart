@@ -199,10 +199,12 @@ class GTAdsYlhProvider extends GTAdsProvider {
         if (callBack != null && callBack.onVerify != null) {
           callBack.onVerify!(adCode, true, transId, rewardName, rewardAmount);
         }
-      }, onECPM: (String ecpmLevel, int ecpm) {
-        if (callBack != null && callBack.onYlhEcpm != null) {
-          callBack.onYlhEcpm!(adCode, ecpmLevel, ecpm);
+      }, onECPM: (String ecpmLevel, int ecpm) async {
+        if (callBack != null && callBack.onEcpm != null) {
+          callBack.onEcpm!(adCode, ecpm);
         }
+        // 这里只记录 ecpm的值 并不实际执行竞价
+        await FlutterTencentad.showRewardVideoAd(result: FlutterTencentBiddingResult().success(ecpm, 0));
       }, onFinish: () {
         if (callBack != null && callBack.onFinish != null) {
           callBack.onFinish!(adCode);
@@ -224,6 +226,7 @@ class GTAdsYlhProvider extends GTAdsProvider {
       customData: customData,
       //下载二次确认弹窗 默认false
       downloadConfirm: true,
+      isBidding: true,
     );
     return stream;
   }

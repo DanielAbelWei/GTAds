@@ -152,6 +152,11 @@ class GTAdsReward {
             callBack?.onFinish!(code);
           }
         },
+        onEcpm: (code, ecpm) {
+          if (callBack?.onEcpm != null) {
+            callBack?.onEcpm!(code, ecpm);
+          }
+        },
       ),
     );
     if (_stream == null) {

@@ -28,11 +28,8 @@ typedef GTATimeout = void Function();
 ///所有广告均加载失败
 typedef GTAEnd = void Function();
 
-// 穿山甲ecpm获取
-typedef CsjEcpm = void Function(GTAdsCode adCode, Map<String, dynamic>? info);
-
-// 优量汇ecpm获取
-typedef YlhEcpm = void Function(GTAdsCode adCode, String ecpmLevel, int ecpm);
+///返回ecpm的竞价信息
+typedef GTAEcpm = void Function(GTAdsCode adCode, num ecpm);
 
 ///激励广告广告奖励验证
 ///
@@ -60,8 +57,7 @@ class GTAdsCallBack {
   GTAExpand? onExpand;
   GTATimeout? onTimeout;
   GTAEnd? onEnd;
-  CsjEcpm? onCsjEcpm;
-  YlhEcpm? onYlhEcpm;
+  GTAEcpm? onEcpm;
 
   /// [onShow] 广告加载成功
   /// [onFail] 广告加载失败（单广告位）
@@ -81,6 +77,5 @@ class GTAdsCallBack {
       this.onTimeout,
       this.onEnd,
       this.onExpand,
-      this.onCsjEcpm,
-      this.onYlhEcpm});
+      this.onEcpm});
 }
