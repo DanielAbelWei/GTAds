@@ -18,9 +18,9 @@ dependencies:
 #      ref: 10da73ec796f490a80ab0c9b26cf01ec66f4c3d4
 #  flutter_unionad:
 #    path: ../../flutter_unionad
-  gtads: ^1.5.0
-#  gtads:
-#    path: ../gtads
+#  gtads: ^1.5.0
+  gtads:
+    path: ../gtads
   
 
 dev_dependencies:
